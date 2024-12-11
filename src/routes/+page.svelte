@@ -1,19 +1,23 @@
 <script>
   const { data } = $props();
-  const { questions } = data;
+  import * as q from "$lib/questions";
+
+  /**
+   * @type {HTMLInputElement}
+   */
+  let questionInput;
 </script>
 
 <h1>Questions</h1>
 
 <ol>
-  {#await questions then questions}
-    {#each questions as question}
-      <li>{question.question}</li>
-    {/each}
-  {/await}
+  {#each data.questions as question (question.id)}
+    <li>
+      {question.question}
+      <button onclick={() => q.remove(question.id)}>Delete</button>
+    </li>
+  {/each}
 </ol>
 
-<form action="?/addQuestion" method="POST">
-  <input type="text" name="question" />
-  <button>Add</button>
-</form>
+<input type="text" bind:this={questionInput} />
+<button onclick={() => q.add(questionInput.value)}>Add</button>

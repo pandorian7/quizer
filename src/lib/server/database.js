@@ -11,3 +11,6 @@ export const getQuestions = () => db.query("SELECT * FROM QUESTIONS");
 
 export const addQuestion = (/** @type {string} */ question) =>
   db.query("INSERT INTO QUESTIONS (question) VALUES (?)", [question]);
+
+export const deleteQuestion = (/** @type {number} */ id) =>
+  db.query("DELETE FROM QUESTIONS WHERE id = ?", [id]);
