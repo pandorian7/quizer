@@ -1,2 +1,19 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+  const { data } = $props();
+  const { questions } = data;
+</script>
+
+<h1>Questions</h1>
+
+<ol>
+  {#await questions then questions}
+    {#each questions as question}
+      <li>{question.question}</li>
+    {/each}
+  {/await}
+</ol>
+
+<form action="?/addQuestion" method="POST">
+  <input type="text" name="question" />
+  <button>Add</button>
+</form>
