@@ -5,7 +5,7 @@ export const actions = {
     const data = await request.formData();
     const question = data.get("question");
     if (question) {
-      await db.addQuestion(String(question));
+      await db.addQuestion(String(question), 0);
       return { success: true };
     }
     return { success: false };

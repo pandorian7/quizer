@@ -37,3 +37,9 @@ is_correct BOOLEAN NOT NULL,
 FOREIGN KEY (question_id) REFERENCES QUESTIONS(id) ON DELETE CASCADE
 );
 ```
+
+add multiple answers column to the questions table
+
+```sql
+ALTER TABLE QUESTIONS ADD multiple_answers BOOLEAN NOT NULL DEFAULT 0;
+```

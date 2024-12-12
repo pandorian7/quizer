@@ -12,8 +12,11 @@ export const getQuestions = () => db.query("SELECT * FROM QUESTIONS");
 export const getQuestion = (/** @type {number} */ id) =>
   db.query("SELECT * FROM QUESTIONS WHERE id = ?", [id]);
 
-export const addQuestion = (/** @type {string} */ question) =>
-  db.query("INSERT INTO QUESTIONS (question) VALUES (?)", [question]);
+export const addQuestion = (/** @type {string} */ question, multiple_answers) =>
+  db.query("INSERT INTO QUESTIONS (question, multiple_answers) VALUES (?, ?)", [
+    question,
+    multiple_answers,
+  ]);
 
 export const deleteQuestion = (/** @type {number} */ id) =>
   db.query("DELETE FROM QUESTIONS WHERE id = ?", [id]);
@@ -29,8 +32,11 @@ export const getAnswers = (question_id) =>
     question_id,
   ]);
 
-export const updateQuestion = (id, question) =>
-  db.query("UPDATE QUESTIONS SET question = ? WHERE id = ?", [question, id]);
+export const updateQuestion = (id, question, multiple_answers) =>
+  db.query(
+    "UPDATE QUESTIONS SET question = ? ,multiple_answers= ?  WHERE id = ?",
+    [question, multiple_answers, id]
+  );
 
 export const deleteAnswer = (id) =>
   db.query("DELETE FROM ANSWERS WHERE id = ?", [id]);
