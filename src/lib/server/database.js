@@ -14,3 +14,10 @@ export const addQuestion = (/** @type {string} */ question) =>
 
 export const deleteQuestion = (/** @type {number} */ id) =>
   db.query("DELETE FROM QUESTIONS WHERE id = ?", [id]);
+
+export const addAnswer = (answer, question_id, is_correct) => {
+  db.query(
+    "INSERT INTO ANSWERS (answer, question_id, is_correct) VALUES (?, ?, ?)",
+    [answer, question_id, is_correct]
+  );
+};

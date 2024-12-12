@@ -6,3 +6,34 @@ docker run --hostname=78409d203e72 --mac-address=02:42:ac:11:00:02 --env=MYSQL_R
 
 id serial
 question text
+
+extend database to hold answers
+
+# answers table
+
+id serial
+answer text
+iscorrent bool
+question forign delete on question delete
+
+```sql
+CREATE TABLE ANSWERS (
+    id SERIAL PRIMARY KEY,
+    question_id BIGINT UNSIGNED NOT NULL,
+    answer TEXT NOT NULL,
+    is_correct BOOLEAN NOT NULL,
+    FOREIGN KEY (question_id) REFERENCES QUESTIONS(id) ON DELETE CASCADE
+);
+```
+
+changing question table id data type to `INT UNSIGNED`
+
+```sql
+CREATE TABLE ANSWERS (
+id SERIAL PRIMARY KEY,
+question_id INT UNSIGNED NOT NULL,
+answer TEXT NOT NULL,
+is_correct BOOLEAN NOT NULL,
+FOREIGN KEY (question_id) REFERENCES QUESTIONS(id) ON DELETE CASCADE
+);
+```
