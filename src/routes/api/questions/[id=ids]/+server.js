@@ -22,7 +22,7 @@ export async function GET({ params }) {
 export async function PUT({ params, request }) {
   const { id } = params;
   const { question, answers } = await request.json();
-  await db.updateQuestion(+id, question);
+  await db.updateQuestion(+id, 0, question);
   const existingAnswers = (await db.getAnswers(+id))[0];
   const existingAnswerIds = existingAnswers.map((row) => row.id);
   const newAnswerIds = answers.map((ans) => ans.id);
