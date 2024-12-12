@@ -1,13 +1,8 @@
 <script>
-  /**
-   * @type {string[]}
-   */
   import { page } from "$app/stores";
   let answers = $state($page.data.answers);
   let question = $state($page.data.question);
   let tmp_answer = $state("");
-
-  console.log($page.data);
 
   let add = () => {
     answers.push({ id: null, answer: tmp_answer, is_correct: 0 });

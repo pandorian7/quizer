@@ -28,3 +28,16 @@ export const getAnswers = (question_id) =>
   db.query("SELECT id, answer, is_correct FROM ANSWERS WHERE question_id = ?", [
     question_id,
   ]);
+
+export const updateQuestion = (id, question) =>
+  db.query("UPDATE QUESTIONS SET question = ? WHERE id = ?", [question, id]);
+
+export const deleteAnswer = (id) =>
+  db.query("DELETE FROM ANSWERS WHERE id = ?", [id]);
+
+export const updateAnswer = (id, answer, is_correct) =>
+  db.query("UPDATE ANSWERS SET answer = ?, is_correct = ? WHERE id = ?", [
+    answer,
+    is_correct,
+    id,
+  ]);
