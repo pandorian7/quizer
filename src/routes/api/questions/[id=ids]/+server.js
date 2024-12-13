@@ -31,7 +31,6 @@ export async function PUT({ params, request }) {
     newAnswerIds.includes(row.id)
   );
   const toAdd = answers.filter((ans) => !existingAnswerIds.includes(ans.id));
-  console.log(existingAnswers, existingAnswerIds, newAnswerIds, toDelete);
   for (const id of toDelete) {
     await db.deleteAnswer(id);
   }

@@ -7,8 +7,18 @@ export async function GET() {
   return json(rows);
 }
 
-// export async function POST({ request }) {
-//   const { question } = await request.json();
-//   await db.addQuestion(question);
-//   return new Response(null, { status: 201 });
-// }
+export async function POST({ request }) {
+  const { question, answers } = await request.json();
+
+  for (const answer of answers) {
+    delete answer.id;
+  }
+  let question_id = await db.addQuestion(
+    question.question,
+    question.multiple_answers
+  );
+  for (const answer of answers) {
+    await db.addAnswer(answer.answer, question_id, answer.is_correct);
+  }
+  return new Response(null, { status: 201 });
+}

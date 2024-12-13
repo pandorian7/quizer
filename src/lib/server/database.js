@@ -12,11 +12,18 @@ export const getQuestions = () => db.query("SELECT * FROM QUESTIONS");
 export const getQuestion = (/** @type {number} */ id) =>
   db.query("SELECT * FROM QUESTIONS WHERE id = ?", [id]);
 
-export const addQuestion = (/** @type {string} */ question, multiple_answers) =>
-  db.query("INSERT INTO QUESTIONS (question, multiple_answers) VALUES (?, ?)", [
-    question,
-    multiple_answers,
-  ]);
+export const addQuestion = async (
+  /** @type {string} */ question,
+  multiple_answers
+) => {
+  await db.query(
+    "INSERT INTO QUESTIONS (question, multiple_answers) VALUES (?, ?)",
+    [question, multiple_answers]
+  );
+  let res = await db.query("SELECT LAST_INSERT_ID() as id");
+  let question_id = res[0][0].id;
+  return question_id;
+};
 
 export const deleteQuestion = (/** @type {number} */ id) =>
   db.query("DELETE FROM QUESTIONS WHERE id = ?", [id]);
