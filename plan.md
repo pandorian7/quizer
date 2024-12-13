@@ -43,3 +43,25 @@ add multiple answers column to the questions table
 ```sql
 ALTER TABLE QUESTIONS ADD multiple_answers BOOLEAN NOT NULL DEFAULT 0;
 ```
+
+# Improve Request handling Plan
+
+- POST /api/questions should handle
+
+  - empty question
+  - empty answers
+  - multiple correct answers if multiple answers is false
+  - no answers
+  - no answer is selected
+
+- Delete /api/questions/{id}
+
+  - non existing id
+
+- Get /api/questions/{id}
+
+  - non existing id
+
+- PUT /api/questions/{id}
+  - non existing id
+  - things in POST /api/questions
