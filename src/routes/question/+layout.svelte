@@ -28,6 +28,15 @@
       answers[i].is_correct = 0;
     }
   };
+
+  let submitUpdates = async (question, answers) => {
+    const { id } = question;
+    await fetch(`/api/questions/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ question, answers }),
+    });
+  };
 </script>
 
 <h1>{$page.data.editing ? "Edit" : "Add"} Question</h1>
@@ -68,7 +77,7 @@
   bind:checked={question.multiple_answers}
   onchange={() => emptySelection()}
 /><label for="multipleAnswers">Allow Multiple Answers</label>
-<button onclick={() => console.log($state.snapshot(answers))}>submit</button>
+<button onclick={() => submitUpdates(question, answers)}>submit</button>
 
 <style>
   .corrent {

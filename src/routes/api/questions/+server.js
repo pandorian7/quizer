@@ -7,8 +7,8 @@ export async function GET() {
   return json(rows);
 }
 
-export async function POST({ request }) {
-  const { question } = await request.json();
-  await db.addQuestion(question);
-  return new Response(null, { status: 201 });
-}
+// export async function POST({ request }) {
+//   const { question } = await request.json();
+//   await db.addQuestion(question);
+//   return new Response(null, { status: 201 });
+// }
