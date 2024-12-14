@@ -52,9 +52,9 @@ ALTER TABLE QUESTIONS ADD multiple_answers BOOLEAN NOT NULL DEFAULT 0;
 
   - empty question ✅
   - empty answers ✅
-  - multiple correct answers if multiple answers is false
+  - multiple correct answers if multiple answers is false ✅
   - no answers ✅
-  - no answer is selected
+  - no answer is selected ✅
 
 - Delete /api/questions/{id}
 

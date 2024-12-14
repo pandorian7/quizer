@@ -24,6 +24,19 @@ export async function POST({ request }) {
     }
   }
 
+  const n_corrent_ans = answers.reduce(
+    (count, answer) => count + (answer.is_correct ? 1 : 0),
+    0
+  );
+
+  if (!question.multiple_answers && n_corrent_ans > 1) {
+    error(400, "single answer should not have multiple answers selected");
+  }
+
+  if (!n_corrent_ans) {
+    error(400, "at least a answer must be marked correct");
+  }
+
   for (const answer of answers) {
     delete answer.id;
   }
