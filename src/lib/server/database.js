@@ -25,13 +25,18 @@ export const addQuestion = async (
   return question_id;
 };
 
-export const deleteQuestion = async (/** @type {number} */ id) => {
+export const questionExists = async (id) => {
   let res = await db.query(
     "SELECT EXISTS (SELECT 1 FROM QUESTIONS WHERE id = ? ) AS RowExists",
-    id
+    [id]
   );
   let { RowExists } = res[0][0];
-  if (RowExists) {
+  return RowExists;
+};
+
+export const deleteQuestion = async (/** @type {number} */ id) => {
+  let exists = await questionExists(id);
+  if (exists) {
     await db.query("DELETE FROM QUESTIONS WHERE id = ?", [id]);
     return 1;
   } else {

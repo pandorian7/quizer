@@ -62,11 +62,11 @@ ALTER TABLE QUESTIONS ADD multiple_answers BOOLEAN NOT NULL DEFAULT 0;
 
 - Get /api/questions/{id}
 
-  - non existing id
+  - non existing id ✅
 
 - PUT /api/questions/{id}
 
-  - non existing id
-  - things in POST /api/questions
+  - non existing id ✅
+  - things in POST /api/questions ✅
 
-- show errors to the user depending on return error
+- show errors to the user depending on return error ✅

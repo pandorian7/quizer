@@ -1,6 +1,7 @@
 import { json, error } from "@sveltejs/kit";
 
 import * as db from "$lib/server/database";
+import { validateQuestionandAnswers } from "$lib/questions.js";
 
 export async function GET() {
   const [rows] = await db.getQuestions();
@@ -10,31 +11,10 @@ export async function GET() {
 export async function POST({ request }) {
   const { question, answers } = await request.json();
 
-  if (!question.question) {
-    error(400, { message: "question is required" });
-  }
+  let err = validateQuestionandAnswers(question, answers);
 
-  if (!answers.length) {
-    error(400, { message: "answers are required" });
-  }
-
-  for (const answer of answers) {
-    if (!answer.answer) {
-      error(400, { message: "answer cannot be empty" });
-    }
-  }
-
-  const n_corrent_ans = answers.reduce(
-    (count, answer) => count + (answer.is_correct ? 1 : 0),
-    0
-  );
-
-  if (!question.multiple_answers && n_corrent_ans > 1) {
-    error(400, "single answer should not have multiple answers selected");
-  }
-
-  if (!n_corrent_ans) {
-    error(400, "at least a answer must be marked correct");
+  if (err) {
+    error(400, { message: err });
   }
 
   for (const answer of answers) {

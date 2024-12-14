@@ -1,12 +1,12 @@
+import { validateQuestionandAnswers } from "$lib/questions.js";
 import * as db from "$lib/server/database";
 
 import { json, error } from "@sveltejs/kit";
 
 export async function DELETE({ params }) {
   const { id } = params;
-  //handle not a number
-  let exists = await db.deleteQuestion(+id);
-  if (exists) {
+  let deleted = await db.deleteQuestion(+id);
+  if (deleted) {
     return new Response(null, { status: 204 });
   } else {
     error(404, { message: "question does not exist" });
@@ -17,6 +17,11 @@ export async function GET({ params }) {
   const { id } = params;
   const res = {};
   const [qrows] = await db.getQuestion(+id);
+
+  if (!qrows.length) {
+    error(404, { message: "question does not exist" });
+  }
+
   const [ansrows] = await db.getAnswers(+id);
   res.question = qrows[0];
   res.answers = ansrows;
@@ -25,6 +30,19 @@ export async function GET({ params }) {
 
 export async function PUT({ params, request }) {
   const { id } = params;
+
+  const exists = db.questionExists(id);
+
+  if (!exists) {
+    error(404, { message: "question does not exist" });
+  }
+
+  const msg = validateQuestionandAnswers(question, answers);
+
+  if (msg) {
+    error(400, { message: err });
+  }
+
   const { question, answers } = await request.json();
   await db.updateQuestion(+id, 0, question);
   const existingAnswers = (await db.getAnswers(+id))[0];
