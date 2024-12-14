@@ -1,12 +1,16 @@
 import * as db from "$lib/server/database";
 
-import { json } from "@sveltejs/kit";
+import { json, error } from "@sveltejs/kit";
 
 export async function DELETE({ params }) {
   const { id } = params;
   //handle not a number
-  await db.deleteQuestion(+id);
-  return new Response(null, { status: 204 });
+  let exists = await db.deleteQuestion(+id);
+  if (exists) {
+    return new Response(null, { status: 204 });
+  } else {
+    error(404, { message: "question does not exist" });
+  }
 }
 
 export async function GET({ params }) {

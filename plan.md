@@ -58,7 +58,7 @@ ALTER TABLE QUESTIONS ADD multiple_answers BOOLEAN NOT NULL DEFAULT 0;
 
 - Delete /api/questions/{id}
 
-  - non existing id
+  - non existing id ✅
 
 - Get /api/questions/{id}
 
