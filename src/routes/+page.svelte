@@ -15,7 +15,8 @@
 <ol>
   {#each data.questions as question (question.id)}
     <li>
-      {question.question} (<a href="/question/{question.id}">{question.id}</a>)
+      {question.question}
+      <a href="/question/{question.id}"><button>Edit</button></a>
       <button onclick={() => q.remove(question.id)}>Delete</button>
     </li>
   {/each}

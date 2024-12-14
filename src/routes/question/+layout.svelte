@@ -80,9 +80,6 @@
 <a href="/">all questions</a>
 <br />
 
-<button onclick={() => console.log($page)}>Show</button>
-<button onclick={() => console.log($state.snapshot(answers))}>Show</button>
-
 {@render children()}
 
 <style>
