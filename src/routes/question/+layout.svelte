@@ -1,8 +1,15 @@
 <script>
   import { page } from "$app/stores";
+  const { children } = $props();
+
   let answers = $state($page.data.answers);
   let question = $state($page.data.question);
   let tmp_answer = $state("");
+
+  $effect(() => {
+    answers = $page.data.answers;
+    question = $page.data.question;
+  });
 
   let add = () => {
     answers.push({ id: null, answer: tmp_answer, is_correct: 0 });
@@ -72,7 +79,11 @@
 <br />
 <a href="/">all questions</a>
 <br />
-<a href="/question/add">new question</a>
+
+<button onclick={() => console.log($page)}>Show</button>
+<button onclick={() => console.log($state.snapshot(answers))}>Show</button>
+
+{@render children()}
 
 <style>
   .corrent {
