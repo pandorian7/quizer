@@ -20,5 +20,5 @@ export async function POST({ request }) {
   for (const answer of answers) {
     await db.addAnswer(answer.answer, question_id, answer.is_correct);
   }
-  return new Response(null, { status: 201 });
+  return new json({ id: question_id }, { status: 201 });
 }
