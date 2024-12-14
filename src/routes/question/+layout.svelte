@@ -81,7 +81,7 @@
 /><label for="multipleAnswers">Allow Multiple Answers</label>
 <button onclick={() => $page.data.update(question, answers)}>submit</button>
 <br />
-<a href="/">all questions</a>
+<a href="/questions">all questions</a>
 <br />
 
 {@render children()}
