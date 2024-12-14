@@ -1,6 +1,8 @@
-# docke rrun
+# docke run
 
-docker run --hostname=78409d203e72 --mac-address=02:42:ac:11:00:02 --env=MYSQL_ROOT_PASSWORD=password --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --env=GOSU_VERSION=1.17 --env=MYSQL_MAJOR=innovation --env=MYSQL_VERSION=9.0.1-1.el9 --env=MYSQL_SHELL_VERSION=9.0.1-1.el9 --volume=quizer-sql-vol:/var/lib/mysql --volume=/var/lib/mysql --network=bridge --workdir=/ -p 3306:3306 --restart=no --runtime=runc -d mysql
+> create a new container
+
+docker run --env=MYSQL_ROOT_PASSWORD=password --name quizer-mysql -v quizer-sql-vol:/var/lib/mysql -p 3306:3306 -d mysql
 
 # Questions Table
 
@@ -63,5 +65,8 @@ ALTER TABLE QUESTIONS ADD multiple_answers BOOLEAN NOT NULL DEFAULT 0;
   - non existing id
 
 - PUT /api/questions/{id}
+
   - non existing id
   - things in POST /api/questions
+
+- show errors to the user depending on return error
