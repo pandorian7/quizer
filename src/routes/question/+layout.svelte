@@ -12,6 +12,10 @@
   });
 
   let add = () => {
+    if (!tmp_answer) {
+      alert("answer cannot be empty");
+      return;
+    }
     answers.push({ id: null, answer: tmp_answer, is_correct: 0 });
     tmp_answer = "";
   };

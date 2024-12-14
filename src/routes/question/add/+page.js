@@ -8,8 +8,15 @@ export function load() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ question, answers }),
     });
-    let { id } = await res.json();
-    goto(`/question/${id}`);
+    if (res.ok) {
+      let { id } = await res.json();
+      goto(`/question/${id}`);
+      return;
+    }
+    if (res.status === 400) {
+      let { message } = await res.json();
+      alert(message);
+    }
   };
   return {
     editing: false,

@@ -1,4 +1,4 @@
-import { json } from "@sveltejs/kit";
+import { json, error } from "@sveltejs/kit";
 
 import * as db from "$lib/server/database";
 
@@ -9,6 +9,20 @@ export async function GET() {
 
 export async function POST({ request }) {
   const { question, answers } = await request.json();
+
+  if (!question.question) {
+    error(400, { message: "question is required" });
+  }
+
+  if (!answers.length) {
+    error(400, { message: "answers are required" });
+  }
+
+  for (const answer of answers) {
+    if (!answer.answer) {
+      error(400, { message: "answer cannot be empty" });
+    }
+  }
 
   for (const answer of answers) {
     delete answer.id;
