@@ -1,5 +1,10 @@
+import { error } from "@sveltejs/kit";
+
 export async function load({ params, fetch }) {
   const res = await fetch(`/api/questions/${params.id}`);
+  if (!res.ok) {
+    error(res.status, await res.json());
+  }
   const { question, answers } = await res.json();
   const update = async (question, answers) => {
     const { id } = question;

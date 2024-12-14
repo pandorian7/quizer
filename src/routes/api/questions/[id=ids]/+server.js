@@ -37,13 +37,14 @@ export async function PUT({ params, request }) {
     error(404, { message: "question does not exist" });
   }
 
+  const { question, answers } = await request.json();
+
   const msg = validateQuestionandAnswers(question, answers);
 
   if (msg) {
     error(400, { message: err });
   }
 
-  const { question, answers } = await request.json();
   await db.updateQuestion(+id, 0, question);
   const existingAnswers = (await db.getAnswers(+id))[0];
   const existingAnswerIds = existingAnswers.map((row) => row.id);
