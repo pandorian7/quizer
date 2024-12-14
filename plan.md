@@ -70,3 +70,24 @@ ALTER TABLE QUESTIONS ADD multiple_answers BOOLEAN NOT NULL DEFAULT 0;
   - things in POST /api/questions ✅
 
 - show errors to the user depending on return error ✅
+
+# Actual Quizes
+
+- create quizes table
+
+  - id serial
+  - quiz title
+
+- create quize qustions table
+
+  - id serial (this field might not be necessary)
+  - quiz id foreign
+  - question id foreign
+
+```sql
+CREATE TABLE  QUIZES (id SERIAL, title TEXT, PRIMARY KEY (id))
+```
+
+```sql
+CREATE TABLE QUIZ_QUESTIONS (id SERIAL, quiz_id BIGINT UNSIGNED, question_id BIGINT UNSIGNED, PRIMARY KEY (id), FOREIGN KEY (quiz_id) REFERENCES QUIZES(id) ON DELETE CASCADE, FOREIGN KEY (question_id) REFERENCES QUESTIONS(id) ON DELETE CASCADE)
+```
