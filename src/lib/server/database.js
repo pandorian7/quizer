@@ -70,3 +70,26 @@ export const updateAnswer = (id, answer, is_correct) =>
     is_correct,
     id,
   ]);
+
+export const getQuizes = async () =>
+  (await db.query("SELECT * FROM QUIZES"))[0];
+
+export const addQuiz = async (title) => {
+  await db.query("INSERT INTO QUIZES (title) VALUES (?)", [title]);
+  let res = await db.query("SELECT LAST_INSERT_ID() as id");
+  let quiz_id = res[0][0].id;
+  return quiz_id;
+};
+
+export const getQuiz = async (id) => {
+  return (await db.query("SELECT * FROM QUIZES WHERE id = ?", [id]))[0][0];
+};
+
+export const quizExists = async (id) => {
+  let res = await db.query(
+    "SELECT EXISTS (SELECT 1 FROM QUIZES WHERE id = ? ) AS RowExists",
+    [id]
+  );
+  let { RowExists } = res[0][0];
+  return RowExists;
+};

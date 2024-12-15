@@ -92,6 +92,15 @@ CREATE TABLE  QUIZES (id SERIAL, title TEXT, PRIMARY KEY (id))
 CREATE TABLE QUIZ_QUESTIONS (id SERIAL, quiz_id BIGINT UNSIGNED, question_id BIGINT UNSIGNED, PRIMARY KEY (id), FOREIGN KEY (quiz_id) REFERENCES QUIZES(id) ON DELETE CASCADE, FOREIGN KEY (question_id) REFERENCES QUESTIONS(id) ON DELETE CASCADE)
 ```
 
+# Quiz API End point
+
+> POST /api/quizes ✅
+> GET /api/quizes ✅
+> POST /api/quizes/{id} ✅
+
+# Resturcture databse.js , questions.js and quizes.js
+
 # BUGS
 
-- unwanted behaviour in /question
+- unwanted behaviour in /question ✅ fixed using layout groups
+- await res.json() might fail if your did not send a valid json object
