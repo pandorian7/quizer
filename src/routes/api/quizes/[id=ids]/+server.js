@@ -1,7 +1,7 @@
 import { error, json } from "@sveltejs/kit";
 
 import * as quiz from "$lib/quizes";
-import * as db from "$lib/server/database";
+import db from "$lib/server/database";
 
 export async function GET({ params }) {
   const { id } = params;
@@ -9,7 +9,7 @@ export async function GET({ params }) {
   if (!exists) {
     error(404, { message: "quiz does not exist" });
   } else {
-    const res = await db.getQuiz(id);
+    const res = await db.quizes.get(id);
     return json(res);
   }
 }

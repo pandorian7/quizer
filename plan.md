@@ -98,7 +98,9 @@ CREATE TABLE QUIZ_QUESTIONS (id SERIAL, quiz_id BIGINT UNSIGNED, question_id BIG
 > GET /api/quizes ✅
 > POST /api/quizes/{id} ✅
 
-# Resturcture databse.js , questions.js and quizes.js
+# Resturcture databse.js , questions.js and quizes.js ✅
+
+> PUT /api/quizes/{id}
 
 # BUGS
 

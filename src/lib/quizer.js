@@ -1,9 +1,8 @@
+// questions
+
 import { invalidate } from "$app/navigation";
 
-/**
- * @param {string} question
- */
-export async function add(question) {
+async function addQuestion(question) {
   await fetch("/api/questions", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -12,10 +11,7 @@ export async function add(question) {
   await invalidate("/api/questions");
 }
 
-/**
- * @param {string} id
- */
-export async function remove(id) {
+async function removeQuestion(id) {
   let res = await fetch(`/api/questions/${id}`, { method: "DELETE" });
   if (res.ok) {
     await invalidate("/api/questions");
@@ -25,7 +21,9 @@ export async function remove(id) {
   }
 }
 
-export async function addAnswer(answer, question_id, is_correct) {
+// answers
+
+async function addAnswer(answer, question_id, is_correct) {
   await fetch(`/api/questions/${question_id}/answers`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -33,6 +31,8 @@ export async function addAnswer(answer, question_id, is_correct) {
   });
   await invalidate(`/api/questions/${question_id}/answers`);
 }
+
+// quizes
 
 export function validateQuestionandAnswers(question, answers) {
   if (!question.question) {
@@ -63,3 +63,15 @@ export function validateQuestionandAnswers(question, answers) {
   }
   return 0;
 }
+
+export default {
+  questions: {
+    add: addQuestion,
+    remove: removeQuestion,
+  },
+  answers: {
+    add: addAnswer,
+  },
+  quizes: {},
+  validateQuestionandAnswers,
+};

@@ -1,6 +1,6 @@
 <script>
   const { data } = $props();
-  import * as q from "$lib/questions";
+  import quizer from "$lib/quizer";
 
   /**
    * @type {HTMLInputElement}
@@ -17,7 +17,9 @@
     <li>
       {question.question}
       <a href="/question/{question.id}"><button>Edit</button></a>
-      <button onclick={() => q.remove(question.id)}>Delete</button>
+      <!-- <button onclick={() => quizer..remove(question.id)}>Delete</button> -->
+      <button onclick={() => quizer.question.remove(question.id)}>Delete</button
+      >
     </li>
   {/each}
 </ol>
