@@ -92,6 +92,11 @@ const quizExists = async (id) => {
   return RowExists;
 };
 
+const updateQuiz = (id, title) =>
+  db.query("UPDATE QUIZES SET title = ? WHERE id = ?", [title, id]);
+
+const deleteQuiz = (id) => db.query("DELETE FROM QUIZES WHERE id = ?", [id]);
+
 export default {
   questions: {
     getAll: getQuestions,
@@ -112,5 +117,7 @@ export default {
     get: getQuiz,
     add: addQuiz,
     exists: quizExists,
+    update: updateQuiz,
+    delete: deleteQuiz,
   },
 };

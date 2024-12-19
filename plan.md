@@ -11,6 +11,14 @@ question text
 
 extend database to hold answers
 
+```sql
+CREATE TABLE QUESTIONS (
+  id SERIAL PRIMARY KEY,
+  question TEXT NOT NULL,
+  multiple_answers BOOLEAN NOT NULL
+)
+```
+
 # answers table
 
 id serial
@@ -100,9 +108,14 @@ CREATE TABLE QUIZ_QUESTIONS (id SERIAL, quiz_id BIGINT UNSIGNED, question_id BIG
 
 # Resturcture databse.js , questions.js and quizes.js ✅
 
-> PUT /api/quizes/{id}
+> PUT /api/quizes/{id} ✅
+> Delete /api/quizes/{id} ✅
+
+change of plans
+
+- there's no option to create individual questions - this is much simpler quiestions are created under quizes
 
 # BUGS
 
 - unwanted behaviour in /question ✅ fixed using layout groups
-- await res.json() might fail if your did not send a valid json object
+- await res.json() might fail if user did not send a valid json object

@@ -19,6 +19,5 @@ export async function POST({ request }) {
     return error(400, { message: "quiz title is required" });
   }
   const quiz_id = await db.quizes.add(title);
-  invalidate("/api/quizes");
   return json({ id: quiz_id }, { status: 201 });
 }
