@@ -97,6 +97,12 @@ const updateQuiz = (id, title) =>
 
 const deleteQuiz = (id) => db.query("DELETE FROM QUIZES WHERE id = ?", [id]);
 
+const getQuizQuestions = (id) =>
+  db.query(
+    "select qs.id, qs.question, qs.multiple_answers from QUESTIONS as qs join QUIZ_QUESTIONS as qq on qs.id = qq.question_id where qq.quiz_id = ?",
+    [id]
+  );
+
 export default {
   questions: {
     getAll: getQuestions,
@@ -119,5 +125,6 @@ export default {
     exists: quizExists,
     update: updateQuiz,
     delete: deleteQuiz,
+    getQuestions: getQuizQuestions,
   },
 };

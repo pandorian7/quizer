@@ -34,6 +34,16 @@ async function addAnswer(answer, question_id, is_correct) {
 
 // quizes
 
+async function getQuizes() {
+  let res = await fetch("/api/quizes");
+  return await res.json();
+}
+
+async function getQuizQuestions(id) {
+  let res = await fetch(`/api/quizes/${id}/questions`);
+  return await res.json();
+}
+
 export function validateQuestionandAnswers(question, answers) {
   if (!question.question) {
     return "question is required";
@@ -72,6 +82,9 @@ export default {
   answers: {
     add: addAnswer,
   },
-  quizes: {},
+  quizes: {
+    getAll: getQuizes,
+    getQuestions: getQuizQuestions,
+  },
   validateQuestionandAnswers,
 };
