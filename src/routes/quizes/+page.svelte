@@ -3,7 +3,7 @@
 
   import TitleBox from "$lib/Components/TitleBox.svelte";
   import Loading from "$lib/Components/Loading.svelte";
-  import AddDial from "$lib/Components/AddDial.svelte";
+  import Dial from "$lib/Components/Dial.svelte";
   import Container from "$lib/Components/Container.svelte";
   import CardTitle from "$lib/Components/Card/CardTitle.svelte";
   import Card from "$lib/Components/Card/Card.svelte";
@@ -34,7 +34,7 @@
 
 <Loading bind:this={loader} />
 <TitleBox bind:this={titlebox} onAdd={(title) => onAdd(title)} />
-<AddDial onclick={() => titlebox.open()} />
+<Dial onclick={() => titlebox.open()} text="Add" />
 <ConfirmDelete bind:this={confirmDelete} />
 
 <div style:margin-top="2rem">

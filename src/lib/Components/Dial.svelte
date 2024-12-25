@@ -1,8 +1,8 @@
 <script>
-  const { onclick } = $props();
+  const { onclick, text } = $props();
 </script>
 
-<button id="addDial" {onclick}>Add</button>
+<button id="addDial" {onclick}>{text}</button>
 
 <style>
   #addDial {
