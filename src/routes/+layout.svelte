@@ -1,5 +1,8 @@
 <script>
   import NavBar from "$lib/Components/NavBar.svelte";
+
+  import "./app.css";
+
   const { children } = $props();
 </script>
 
