@@ -10,7 +10,7 @@
     --grey-900: #171717;
 
     --secondary-color: rgb(74, 171, 0);
-    /* --default-card-background: rgb(107, 107, 107); */
+    /* --default-card-background: var(--grey-500); */
     --default-card-background: var(--grey-500);
     --warning-color: rgb(233, 202, 0);
     --danger-color: rgb(217, 36, 36);

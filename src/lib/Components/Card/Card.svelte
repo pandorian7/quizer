@@ -9,7 +9,7 @@
 <style>
   #card {
     /* background-color: rgb(107, 107, 107); */
-    background-color: var(--default-card-background);
+    background-color: var(--card-background, var(--default-card-background));
     padding: var(--card-padding, 10px);
     color: white;
     margin-bottom: 1rem;
