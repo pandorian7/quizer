@@ -51,9 +51,11 @@ const addAnswer = (answer, question_id, is_correct) =>
   );
 
 const getAnswers = (question_id) =>
-  db.query("SELECT id, answer, is_correct FROM ANSWERS WHERE question_id = ?", [
-    question_id,
-  ]);
+  db
+    .query("SELECT id, answer, is_correct FROM ANSWERS WHERE question_id = ?", [
+      question_id,
+    ])
+    .then((res) => res[0]);
 
 const updateQuestion = (id, question, multiple_answers) =>
   db.query(
@@ -98,10 +100,12 @@ const updateQuiz = (id, title) =>
 const deleteQuiz = (id) => db.query("DELETE FROM QUIZES WHERE id = ?", [id]);
 
 const getQuizQuestions = (id) =>
-  db.query(
-    "select qs.id, qs.question, qs.multiple_answers from QUESTIONS as qs join QUIZ_QUESTIONS as qq on qs.id = qq.question_id where qq.quiz_id = ?",
-    [id]
-  );
+  db
+    .query(
+      "select qs.id, qs.question, qs.multiple_answers from QUESTIONS as qs join QUIZ_QUESTIONS as qq on qs.id = qq.question_id where qq.quiz_id = ?",
+      [id]
+    )
+    .then((res) => res[0]);
 
 export default {
   questions: {

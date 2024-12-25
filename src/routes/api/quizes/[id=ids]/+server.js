@@ -9,6 +9,13 @@ export async function GET({ params }) {
     error(404, { message: "quiz does not exist" });
   } else {
     const res = await db.quizes.get(id);
+    res.questions = await db.quizes.getQuestions(id);
+    const promises = res.questions.map(async (q, i) =>
+      (async function () {
+        res.questions[i].answers = await db.answers.get(q.id);
+      })()
+    );
+    await Promise.all(promises);
     return json(res);
   }
 }
