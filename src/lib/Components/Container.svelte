@@ -4,7 +4,7 @@
 
 <div class="base">
   <div class="container">
-    {@render children()}
+    <div class="internal">{@render children()}</div>
   </div>
 </div>
 
@@ -25,6 +25,12 @@
     display: flex;
   }
   .container {
+    margin: auto;
+    display: flex;
+  }
+
+  .internal {
+    width: var(--width, 100%);
     margin: auto;
   }
 </style>

@@ -43,10 +43,6 @@
     margin: auto;
   }
 
-  :global(body) {
-    margin: 0;
-    /* padding: 0; */
-  }
   textarea {
     resize: none;
   }

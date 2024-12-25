@@ -8,8 +8,6 @@
 
   let title = $state(data.title);
   let questions = $state(data.questions);
-
-  console.log(data);
 </script>
 
 {#snippet q({ question })}<li>{question}</li>{/snippet}

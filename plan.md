@@ -111,6 +111,9 @@ CREATE TABLE QUIZ_QUESTIONS (id SERIAL, quiz_id BIGINT UNSIGNED, question_id BIG
 > PUT /api/quizes/{id} ✅
 > Delete /api/quizes/{id} ✅
 
+- decided to change most of the things in the api
+  i'm only implementing /api/quizes endpoint
+
 change of plans
 
 - there's no option to create individual questions - this is much simpler quiestions are created under quizes
