@@ -24,6 +24,11 @@ const addQuestion = async (
   let question_id = res[0][0].id;
   return question_id;
 };
+const QuestionaddToQuiz = async (quiz_id, question_id) =>
+  await db.query(
+    "INSERT INTO QUIZ_QUESTIONS (quiz_id, question_id) VALUES (?, ?)",
+    [quiz_id, question_id]
+  );
 
 const questionExists = async (id) => {
   let res = await db.query(
@@ -112,6 +117,7 @@ export default {
     getAll: getQuestions,
     get: getQuestion,
     add: addQuestion,
+    addToQuiz: QuestionaddToQuiz,
     exists: questionExists,
     delete: deleteQuestion,
     update: updateQuestion,
