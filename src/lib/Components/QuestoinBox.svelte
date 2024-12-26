@@ -5,6 +5,7 @@
   import CardTitle from "./Card/CardTitle.svelte";
   import CardBody from "./Card/CardBody.svelte";
   import CardFooter from "./Card/CardFooter.svelte";
+  import { slide } from "svelte/transition";
 
   const on = {
     radioChange: (selectedAns) =>
@@ -39,8 +40,18 @@
   let msgBox = $state({
     msg: "Question Must be filled",
     color: "danger",
-    visible: true,
+    visible: false,
   });
+
+  export const error = {
+    show: (msg) => {
+      msgBox.msg = msg;
+      msgBox.visible = true;
+    },
+    hide: () => {
+      msgBox.visible = false;
+    },
+  };
 </script>
 
 {#snippet answerbar(answer, multiple, onRadioChange, onAnswerDelete)}
@@ -67,7 +78,11 @@
   <Card --card-padding="0">
     <CardTitle>
       {#if msgBox.visible}
-        <div id="msgbox" style:background-color="var(--{msgBox.color}-color)">
+        <div
+          id="msgbox"
+          style:background-color="var(--{msgBox.color}-color)"
+          transition:slide
+        >
           {msgBox.msg}
         </div>
       {/if}
