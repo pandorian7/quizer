@@ -1,5 +1,5 @@
 <script>
-  const { question = $bindable(), onDelete } = $props();
+  const { question = $bindable(), onDelete, varient = "edit" } = $props();
 
   import Card from "./Card/Card.svelte";
   import CardTitle from "./Card/CardTitle.svelte";
@@ -36,6 +36,11 @@
   };
 
   let tmpAnswer = $state("");
+  let msgBox = $state({
+    msg: "Question Must be filled",
+    color: "danger",
+    visible: true,
+  });
 </script>
 
 {#snippet answerbar(answer, multiple, onRadioChange, onAnswerDelete)}
@@ -60,8 +65,13 @@
 
 {#snippet questionBox(question)}
   <Card --card-padding="0">
-    <CardTitle
-      ><div style:padding="10px">
+    <CardTitle>
+      {#if msgBox.visible}
+        <div id="msgbox" style:background-color="var(--{msgBox.color}-color)">
+          {msgBox.msg}
+        </div>
+      {/if}
+      <div style:padding="10px">
         <textarea class="editableTextArea" bind:value={question.question}
         ></textarea>
       </div></CardTitle
@@ -135,5 +145,10 @@
   }
   .small {
     padding: 0.3rem 0.6rem;
+  }
+
+  #msgbox {
+    padding: 10px;
+    font-size: 1rem;
   }
 </style>
