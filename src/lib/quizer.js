@@ -2,11 +2,11 @@
 
 import { invalidate } from "$app/navigation";
 
-async function addQuestion(question) {
+async function addQuestion(question, answers, quiz_id) {
   await fetch("/api/questions", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ question }),
+    body: JSON.stringify({ question, answers, quiz_id }),
   });
   await invalidate("/api/questions");
 }
