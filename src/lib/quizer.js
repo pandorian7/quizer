@@ -44,6 +44,18 @@ async function getQuizQuestions(id) {
   return await res.json();
 }
 
+async function updateQuiz(id, title) {
+  const res = await fetch(`/api/quizes/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ title }),
+  });
+  if (!res.ok) {
+    let { message } = await res.json();
+    throw new Error(message);
+  }
+}
+
 export function validateQuestionandAnswers(question, answers) {
   if (!question.question) {
     return "question is required";
@@ -85,6 +97,7 @@ export default {
   quizes: {
     getAll: getQuizes,
     getQuestions: getQuizQuestions,
+    update: updateQuiz,
   },
   validateQuestionandAnswers,
 };
