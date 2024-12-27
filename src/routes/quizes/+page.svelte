@@ -79,7 +79,9 @@
                     style:background-color="var(--warning-color)">Edit</button
                   >
                 </a>
-                <button class="actionBtn">Attempt</button>
+                <a href="/quizes/{quiz.id}/attempt"
+                  ><button class="actionBtn">Attempt</button></a
+                >
               </div>
             </div></CardFooter
           >
