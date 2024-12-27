@@ -50,14 +50,12 @@
             --card-body-background="rgb(144, 144, 144)"
             --card-body-margin="0"
             ><div style:padding="10px" style:font-family="arial">
-              Get ready to explore the wonders of the universe! This
-              beginner-friendly quiz is designed to test your knowledge of basic
-              astronomy concepts, from the stars and galaxies that make up our
-              cosmos to the mysteries of space and time
+              {quiz.description || "No Descriptoin"}
             </div></CardBody
           >
           <CardFooter
             ><div style:display="flex">
+              <div style:padding="8px">{quiz.points} points</div>
               <div style:margin-left="auto">
                 <button
                   class="actionBtn"

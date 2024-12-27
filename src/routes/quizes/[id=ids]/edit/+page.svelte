@@ -11,6 +11,7 @@
   import { slide } from "svelte/transition";
   import Loading from "$lib/Components/Loading.svelte";
   import { invalidate } from "$app/navigation";
+  import CardFooter from "$lib/Components/Card/CardFooter.svelte";
 
   const { data } = $props();
 
@@ -64,9 +65,13 @@
           (qOrg) => quiz.questions.findIndex((q) => q.id === qOrg.id) === -1
         ),
       };
-
       const tasks = [
-        quizer.quizes.update(quiz.id, quiz.title),
+        quizer.quizes.update(
+          quiz.id,
+          quiz.title,
+          quiz.description,
+          quiz.points
+        ),
         ...questionsTo.add.map((q) => {
           const { question, answers, multiple_answers } = q;
           return quizer.questions.add(
@@ -119,7 +124,33 @@
           </div>
         {/if}
         <div style:padding="10px">
+          <small><span>Title</span></small>
           <textarea class="editableTextArea" bind:value={quiz.title}></textarea>
+        </div></CardTitle
+      >
+      <CardFooter
+        ><div style:padding="5px 10px">
+          <label for="points">Points: </label>
+          <select id="points" bind:value={quiz.points}>
+            <option value={100}>100</option>
+            <option value={300}>300</option>
+            <option value={500}>500</option>
+            <option value={800}>800</option>
+            <option value={1000}>1000</option>
+          </select>
+        </div></CardFooter
+      >
+    </Card>
+    <Card --card-background="var(--grey-700)" --card-padding="0">
+      <CardTitle>
+        <div style:padding="10px">
+          <small><span>Description</span></small>
+          <textarea
+            class="editableTextArea"
+            style:font-size="1rem"
+            bind:value={quiz.description}
+            rows="5"
+          ></textarea>
         </div></CardTitle
       >
     </Card>

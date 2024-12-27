@@ -99,8 +99,11 @@ const quizExists = async (id) => {
   return RowExists;
 };
 
-const updateQuiz = (id, title) =>
-  db.query("UPDATE QUIZES SET title = ? WHERE id = ?", [title, id]);
+const updateQuiz = (id, title, description, points) =>
+  db.query(
+    "UPDATE QUIZES SET title = ?, description = ?, points = ? WHERE id = ?",
+    [title, description, points, id]
+  );
 
 const deleteQuiz = (id) => db.query("DELETE FROM QUIZES WHERE id = ?", [id]);
 

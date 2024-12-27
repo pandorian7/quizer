@@ -1,7 +1,7 @@
 <script>
   import { Card, Button } from "./index";
 
-  const { title, description, onAttempt } = $props();
+  const { title, description, onAttempt, points } = $props();
 </script>
 
 <Card>
@@ -9,7 +9,7 @@
     {title}
   {/snippet}
   {#snippet body()}
-    <center>{description}</center><br />
+    <center>{description} <br /><br /> {points} points</center><br />
     <center><Button onclick={onAttempt}>Attempt Now</Button></center>
   {/snippet}
 </Card>

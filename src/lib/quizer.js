@@ -52,15 +52,15 @@ async function getQuizQuestions(id) {
   return await res.json();
 }
 
-async function updateQuiz(id, title) {
+async function updateQuiz(id, title, description, points) {
   const res = await fetch(`/api/quizes/${id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ title }),
+    body: JSON.stringify({ title, description, points }),
   });
   if (!res.ok) {
     let { message } = await res.json();
-    throw new Error(message);
+    throw new Error(message, description, points);
   }
 }
 

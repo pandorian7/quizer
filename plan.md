@@ -124,6 +124,12 @@ change of plans
 ALTER TABLE QUESTIONS ADD duration UNSIGNED INT NOT NULL DEFAULT 30;
 ```
 
+# New FIelds description(nullable), points, not null default 100 to quizes table
+
+```sql
+ALTER TABLE QUIZES ADD description TEXT, ADD points INT UNSIGNED NOT NULL DEFAULT 100;
+```
+
 # BUGS
 
 - unwanted behaviour in /question ✅ fixed using layout groups

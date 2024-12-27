@@ -27,13 +27,13 @@
       <!-- <center><Button onclick={next}>Start</Button></center> -->
       {@const options = {
         title: data.quiz.title,
-        description:
-          "Get ready to explore the wonders of the universe! This beginner-friendly quiz is designed to test your knowledge of basic astronomy concepts, from the stars and galaxies that make up our cosmos to the mysteries of space and time",
+        description: data.quiz.description,
+        points: data.quiz.points,
         onAttempt: next,
       }}
       <AttemptNowCard {...options} />
     {:else if state.pointer >= data.quiz.questions.length}
-      <center>end</center>
+      <center>not implemented yet</center>
     {:else}
       {@const question = data.quiz.questions[state.pointer]}
       {#key state.pointer}

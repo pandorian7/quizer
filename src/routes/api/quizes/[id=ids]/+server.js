@@ -27,14 +27,13 @@ export async function PUT({ params, request }) {
     return error(404, { message: "quiz does not exist" });
   }
 
-  const { title } = await request
+  const { title, description, points } = await request
     .json()
     .catch(() => error(400, { message: "invalid object" }));
-
   if (!title) {
     return error(400, { message: "quiz title is required" });
   }
-  await db.quizes.update(id, title);
+  await db.quizes.update(id, title, description, points);
   return json({ id });
 }
 
