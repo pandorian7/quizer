@@ -23,6 +23,7 @@
 
   .base {
     display: flex;
+    height: 100%;
   }
   .container {
     margin: auto;
