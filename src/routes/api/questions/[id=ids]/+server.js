@@ -45,7 +45,12 @@ export async function PUT({ params, request }) {
     error(400, { message: err });
   }
 
-  await db.questions.update(+id, question.question, question.multiple_answers);
+  await db.questions.update(
+    +id,
+    question.question,
+    question.multiple_answers,
+    question.duration
+  );
   const existingAnswers = await db.answers.get(+id);
   const existingAnswerIds = existingAnswers.map((row) => row.id);
   const newAnswerIds = answers.map((ans) => ans.id);

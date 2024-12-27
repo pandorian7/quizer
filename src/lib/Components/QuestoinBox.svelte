@@ -113,6 +113,15 @@
     <CardFooter
       ><div style:display="flex" style:align-items="center">
         <div class="textbar">
+          <select bind:value={question.duration}>
+            <option value={10}>10 seconds</option>
+            <option value={30}>30 seconds</option>
+            <option value={60}>1 min</option>
+            <option value={120}>2 min</option>
+            <option value={180}>3 min</option>
+            <option value={240}>4 min</option>
+            <option value={300}>5 min</option>
+          </select>
           <input
             type="checkbox"
             bind:checked={question.multiple_answers}

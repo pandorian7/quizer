@@ -25,7 +25,7 @@
 {/snippet}
 
 <div id="card">
-  <ProgressBar duration={60} onFinish={onNext} />
+  <ProgressBar duration={question.duration} onFinish={onNext} />
   <Card>
     {#snippet header()}
       {question.question}
@@ -39,7 +39,7 @@
       <div id="footer">
         <div id="left">
           <div id="number">#{questionIndex + 1}</div>
-          <div><CountDown duration={60} /></div>
+          <div><CountDown duration={question.duration} /></div>
         </div>
         <div id="center"></div>
         <div id="right">

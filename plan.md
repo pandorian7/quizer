@@ -118,6 +118,12 @@ change of plans
 
 - there's no option to create individual questions - this is much simpler quiestions are created under quizes
 
+# New Field duration to questions table not null defaults to 30
+
+```sql
+ALTER TABLE QUESTIONS ADD duration UNSIGNED INT NOT NULL DEFAULT 30;
+```
+
 # BUGS
 
 - unwanted behaviour in /question ✅ fixed using layout groups

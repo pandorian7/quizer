@@ -62,10 +62,10 @@ const getAnswers = (question_id) =>
     ])
     .then((res) => res[0]);
 
-const updateQuestion = (id, question, multiple_answers) =>
+const updateQuestion = (id, question, multiple_answers, duration) =>
   db.query(
-    "UPDATE QUESTIONS SET question = ? ,multiple_answers= ?  WHERE id = ?",
-    [question, multiple_answers, id]
+    "UPDATE QUESTIONS SET question = ? ,multiple_answers= ?, duration = ?  WHERE id = ?",
+    [question, multiple_answers, duration, id]
   );
 
 const deleteAnswer = (id) => db.query("DELETE FROM ANSWERS WHERE id = ?", [id]);
@@ -107,7 +107,7 @@ const deleteQuiz = (id) => db.query("DELETE FROM QUIZES WHERE id = ?", [id]);
 const getQuizQuestions = (id) =>
   db
     .query(
-      "select qs.id, qs.question, qs.multiple_answers from QUESTIONS as qs join QUIZ_QUESTIONS as qq on qs.id = qq.question_id where qq.quiz_id = ?",
+      "select qs.id, qs.question, qs.multiple_answers, qs.duration from QUESTIONS as qs join QUIZ_QUESTIONS as qq on qs.id = qq.question_id where qq.quiz_id = ?",
       [id]
     )
     .then((res) => res[0]);

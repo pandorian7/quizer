@@ -34,6 +34,7 @@
         id: null,
         question: "New Question",
         answers: [{ id: null, answer: "New Answer", is_correct: true }],
+        duration: 30,
       });
     },
     verify: () => {
@@ -76,9 +77,9 @@
         }),
         ...questionsTo.delete.map((q) => quizer.questions.remove(q.id)),
         ...questionsTo.update.map((q) => {
-          const { question, answers, multiple_answers } = q;
+          const { question, answers, multiple_answers, duration } = q;
           return quizer.questions.update(
-            { question, multiple_answers },
+            { question, multiple_answers, duration },
             $state.snapshot(answers),
             q.id
           );
