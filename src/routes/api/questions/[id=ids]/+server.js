@@ -45,8 +45,8 @@ export async function PUT({ params, request }) {
     error(400, { message: err });
   }
 
-  await db.questions.update(+id, 0, question);
-  const existingAnswers = (await db.answers.get(+id))[0];
+  await db.questions.update(+id, question.question, question.multiple_answers);
+  const existingAnswers = await db.answers.get(+id);
   const existingAnswerIds = existingAnswers.map((row) => row.id);
   const newAnswerIds = answers.map((ans) => ans.id);
   const toDelete = existingAnswerIds.filter((id) => !newAnswerIds.includes(id));

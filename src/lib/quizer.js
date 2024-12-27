@@ -11,6 +11,14 @@ async function addQuestion(question, answers, quiz_id) {
   await invalidate("/api/questions");
 }
 
+async function updateQuestion(question, answers, id) {
+  await fetch(`/api/questions/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ question, answers }),
+  });
+}
+
 async function removeQuestion(id) {
   let res = await fetch(`/api/questions/${id}`, { method: "DELETE" });
   if (res.ok) {
@@ -90,6 +98,7 @@ export default {
   questions: {
     add: addQuestion,
     remove: removeQuestion,
+    update: updateQuestion,
   },
   answers: {
     add: addAnswer,
