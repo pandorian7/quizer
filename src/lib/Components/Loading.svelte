@@ -5,8 +5,9 @@
 
   export const loading = async (caller) => {
     modal.open();
-    await caller();
+    const ret = await caller();
     modal.close();
+    return ret;
   };
 </script>
 
