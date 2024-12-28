@@ -11,10 +11,8 @@ function evaluate(quiz, response) {
     ).length;
     const n_wrong = selected.filter((ansId) => !correct.includes(ansId)).length;
     const question_block_score = Math.max(0, n_correct - n_wrong);
-    console.log(question_block_score);
     const time_multiplier = 1 - timetaken / duration;
     const timed_block_score = question_block_score * (1 + time_multiplier);
-    console.log(correct.length);
     const max_block_score = correct.length * 2;
     return [timed_block_score, max_block_score];
   });

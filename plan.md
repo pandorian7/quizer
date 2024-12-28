@@ -144,6 +144,27 @@ ALTER TABLE QUIZES ADD description TEXT, ADD points INT UNSIGNED NOT NULL DEFAUL
 
 - database will save the block score of the quiz (not the final score) to counter the editing the quiz score invalidating previous attempts
 
+# implementing users and sesstions
+
+- create users table and sesstions table
+
+```sql
+CREATE TABLE USERS (
+    id SERIAl PRIMARY KEY,
+    username VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE SESSIONS (
+    id SERIAL PRIMARY KEY,
+    user_id BIGINT UNSIGNED NOT NULL,
+    token VARCHAR(36) NOT NULL UNIQUE,
+    foreign KEY (user_id) REFERENCES USERS(id) ON DELETE CASCADE
+);
+```
+
+- write databse quieries to interact with db
+
 # BUGS
 
 - unwanted behaviour in /question ✅ fixed using layout groups

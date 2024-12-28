@@ -115,6 +115,25 @@ const getQuizQuestions = (id) =>
     )
     .then((res) => res[0]);
 
+const createUser = async (username, password_hash) => {
+  await db.query("INSERT INTO USERS (username, password_hash) VALUES (?, ?)", [
+    username,
+    password_hash,
+  ]);
+  let res = await db.query("SELECT LAST_INSERT_ID() as id");
+  let user_id = res[0][0].id;
+  return user_id;
+};
+
+const userExists = async (username) => {
+  let res = await db.query(
+    "SELECT EXISTS (SELECT 1 FROM USERS WHERE username = ? ) AS RowExists",
+    [username]
+  );
+  let { RowExists } = res[0][0];
+  return RowExists;
+};
+
 export default {
   questions: {
     getAll: getQuestions,
@@ -139,5 +158,9 @@ export default {
     update: updateQuiz,
     delete: deleteQuiz,
     getQuestions: getQuizQuestions,
+  },
+  user: {
+    create: createUser,
+    exists: userExists,
   },
 };

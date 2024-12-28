@@ -23,6 +23,10 @@
     background-color: var(--success-color);
   }
 
+  .v-info {
+    background-color: var(--info-color);
+  }
+
   .s-normal {
     padding: 0.6rem 1rem;
   }
