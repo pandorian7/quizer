@@ -130,6 +130,20 @@ ALTER TABLE QUESTIONS ADD duration UNSIGNED INT NOT NULL DEFAULT 30;
 ALTER TABLE QUIZES ADD description TEXT, ADD points INT UNSIGNED NOT NULL DEFAULT 100;
 ```
 
+# This is how answers are being evaluated
+
+- every selected correct answer gives +1 block score
+- every selected wrong answer gives -1 block score
+- block score of a question is the max(0, sum of block scores of answers)
+- for each question time multiplier is calculated by (1 - time_taken/question_duration)
+- timed blcok score for the question is blockscore\*(1+time multiplier)
+- block score of the quiz is the sum(timed block score of all questions)
+- maximum block score of a question is (n_correct_answers\*2)
+- maximun quiz block score is sum(maximum block score for each question)
+- final score is the (quiz block score/maximum quiz block score)\*quiz total score
+
+- database will save the block score of the quiz (not the final score) to counter the editing the quiz score invalidating previous attempts
+
 # BUGS
 
 - unwanted behaviour in /question ✅ fixed using layout groups

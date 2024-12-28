@@ -47,6 +47,11 @@ async function getQuizes() {
   return await res.json();
 }
 
+async function getQuiz(id) {
+  const res = await fetch(`/api/quizes/${id}`);
+  return await res.json();
+}
+
 async function getQuizQuestions(id) {
   let res = await fetch(`/api/quizes/${id}/questions`);
   return await res.json();
@@ -62,6 +67,15 @@ async function updateQuiz(id, title, description, points) {
     let { message } = await res.json();
     throw new Error(message, description, points);
   }
+}
+
+async function evaluateQuiz(id, response) {
+  const res = await fetch(`/api/evaluate/${id}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(response),
+  });
+  return await res.json();
 }
 
 export function validateQuestionandAnswers(question, answers) {
@@ -105,8 +119,10 @@ export default {
   },
   quizes: {
     getAll: getQuizes,
+    get: getQuiz,
     getQuestions: getQuizQuestions,
     update: updateQuiz,
+    evaluate: evaluateQuiz,
   },
   validateQuestionandAnswers,
 };

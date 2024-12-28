@@ -3,7 +3,11 @@
     QuestionCard,
     Container,
     AttemptNowCard,
+    AfterQuizCard,
+    Loading,
   } from "$lib/Components/index.js";
+
+  import quizer from "$lib/quizer.js";
 
   const { data } = $props();
 
@@ -16,14 +20,23 @@
     ),
     pointer: -1,
   });
+  let results = $state({ time_taken: 0, score: 0, total: 0 });
+
+  $effect(async () => {
+    if (state.pointer >= data.quiz.questions.length) {
+      results = await loader.loading(() =>
+        quizer.quizes.evaluate(data.quiz.id, $state.snapshot(state))
+      );
+    }
+  });
 
   const next = () => {
     state.pointer++;
   };
-
-  $inspect(state);
+  let loader;
 </script>
 
+<Loading bind:this={loader} />
 <div style:height="100%">
   <Container>
     {#if state.pointer == -1}
@@ -36,7 +49,7 @@
       }}
       <AttemptNowCard {...options} />
     {:else if state.pointer >= data.quiz.questions.length}
-      <center>{JSON.stringify($state.snapshot(state))}</center>
+      <AfterQuizCard title={data.quiz.title} {...results} id={data.quiz.id} />
     {:else}
       {@const question = data.quiz.questions[state.pointer]}
       {#key state.pointer}
