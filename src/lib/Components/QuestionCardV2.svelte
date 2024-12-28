@@ -1,7 +1,21 @@
 <script>
   import { Card, Button, ProgressBar, CountDown } from "./index";
 
-  let { question, selected = $bindable([]), onNext, questionIndex } = $props();
+  let {
+    question,
+    selected = $bindable([]),
+    onNext,
+    questionIndex,
+    elapsed = $bindable(),
+  } = $props();
+  const start = new Date();
+
+  const onNextClick = () => {
+    const end = new Date();
+    elapsed = (end - start) / 1000;
+
+    onNext();
+  };
 </script>
 
 {#snippet answer(answer)}
@@ -43,7 +57,7 @@
         </div>
         <div id="center"></div>
         <div id="right">
-          <Button onclick={onNext}>NEXT</Button>
+          <Button onclick={onNextClick}>NEXT</Button>
         </div>
       </div>
     {/snippet}

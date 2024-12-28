@@ -11,6 +11,9 @@
     selected: Object.fromEntries(
       data.quiz.questions.map((q) => [q.id, [null]])
     ),
+    time: Object.fromEntries(
+      data.quiz.questions.map((q) => [q.id, q.duration])
+    ),
     pointer: -1,
   });
 
@@ -33,7 +36,7 @@
       }}
       <AttemptNowCard {...options} />
     {:else if state.pointer >= data.quiz.questions.length}
-      <center>not implemented yet</center>
+      <center>{JSON.stringify($state.snapshot(state))}</center>
     {:else}
       {@const question = data.quiz.questions[state.pointer]}
       {#key state.pointer}
@@ -42,6 +45,7 @@
             {question}
             questionIndex={state.pointer}
             bind:selected={state.selected[question.id]}
+            bind:elapsed={state.time[question.id]}
             onNext={() => state.pointer++}
           />
         </div>
