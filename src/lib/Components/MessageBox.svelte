@@ -11,7 +11,7 @@
     visible: false,
   });
 
-  const showBox = (color, msg) => {
+  const showBox = async (color, msg, callback) => {
     box = {
       color,
       msg,
@@ -20,15 +20,23 @@
     setTimeout(() => {
       box.visible = false;
     }, timeout);
+    wait().then(() => callback?.());
   };
 
-  export const danger = (msg) => showBox("danger", msg);
-  export const success = (msg) => showBox("success", msg);
-  export const warning = (msg) => showBox("warning", msg);
+  const wait = () =>
+    new Promise((resolve) => {
+      resolver = resolve;
+    });
+
+  export const danger = (msg, callback) => showBox("danger", msg, callback);
+  export const success = (msg, callback) => showBox("success", msg, callback);
+  export const warning = (msg, callback) => showBox("warning", msg, callback);
+
+  let resolver;
 </script>
 
 {#if box.visible}
-  <div id="container" transition:fly={{ y: 100 }}>
+  <div id="container" transition:fly={{ y: 100 }} onoutroend={() => resolver()}>
     <Container>
       <div id="box" class={[box.color]}><h3>{box.msg}</h3></div>
     </Container>
