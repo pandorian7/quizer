@@ -148,6 +148,31 @@ const getUser = async (username, password_hash) => {
   }
 };
 
+const createSession = async (user_id, session_hash) => {
+  await db.query("INSERT INTO SESSIONS (user_id, token) VALUES (?, ?)", [
+    user_id,
+    session_hash,
+  ]);
+  return session_hash;
+};
+
+const deleteSession = async (session_hash) =>
+  await db.query("DELETE FROM SESSIONS WHERE token = ?", [session_hash]);
+
+const userFromSession = async (session_hash) => {
+  const res = (
+    await db.query(
+      "SELECT USERS.username, USERS.id AS id FROM USERS JOIN SESSIONS ON USERS.id = SESSIONS.user_id WHERE SESSIONS.token = ?;",
+      [session_hash]
+    )
+  )[0];
+  if (res.length) {
+    return res[0];
+  } else {
+    return null;
+  }
+};
+
 export default {
   questions: {
     getAll: getQuestions,
@@ -177,5 +202,10 @@ export default {
     create: createUser,
     exists: userExists,
     get: getUser,
+  },
+  session: {
+    create: createSession,
+    get: userFromSession,
+    delete: deleteSession,
   },
 };

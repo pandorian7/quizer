@@ -1,4 +1,4 @@
-import { error, json } from "@sveltejs/kit";
+import { error } from "@sveltejs/kit";
 
 import db from "$lib/server/database.js";
 import auth from "$lib/server/auth.js";
@@ -14,9 +14,7 @@ export async function POST({ request }) {
     return error(400, "username taken");
   }
 
-  const password_hash = await auth.password.hash(password);
+  await auth.user.create(username, password);
 
-  const user_id = await db.user.create(username, password_hash);
-
-  return json({ user_id });
+  return new Response(null, { status: 200 });
 }

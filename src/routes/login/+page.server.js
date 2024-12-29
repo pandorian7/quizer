@@ -1,6 +1,7 @@
+import database from "$lib/server/database.js";
 import { redirect } from "@sveltejs/kit";
 
-export function load({ cookies }) {
+export async function load({ cookies }) {
   const session = cookies.get("session");
-  if (session) redirect(303, "/quizes");
+  if (await database.session.get(session)) redirect(303, "/quizes");
 }

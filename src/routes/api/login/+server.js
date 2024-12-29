@@ -10,7 +10,8 @@ export async function POST({ request, cookies }) {
   }
   const user = await auth.user.get(username, password);
   if (user) {
-    cookies.set("session", user.username, { path: "/" });
+    const session = await auth.session.create(user.id);
+    cookies.set("session", session, { path: "/" });
     return new Response(null, { status: 200 });
   } else {
     return error(401, "Username or Password Invalid");

@@ -4,10 +4,8 @@ async function createUser(username, password) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, password }),
   });
-  const data = await res.json();
-  if (res.ok) {
-    return data.user_id;
-  } else {
+  if (!res.ok) {
+    const data = await res.json();
     throw new Error(data.message);
   }
 }
