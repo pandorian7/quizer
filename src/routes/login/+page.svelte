@@ -1,10 +1,12 @@
 <script>
+  import { goto } from "$app/navigation";
   import {
     Container,
     Card,
     TextInput,
     Button,
     MessageBox,
+    Loading,
   } from "$lib/Components/index";
   import "$lib/css/fonts.css";
 
@@ -14,8 +16,6 @@
     username: "",
     password: "",
   });
-
-  let message;
 
   function validate() {
     if (creds.username === "" || creds.password === "") {
@@ -27,15 +27,30 @@
 
   function register() {
     if (validate()) {
-      auth.user
-        .create(creds.username, creds.password)
-        .then(() => message.success("User created"))
-        .catch((err) => message.danger(err.message));
+      loader.loading(() =>
+        auth.user
+          .create(creds.username, creds.password)
+          .then(() => message.success("User created", login))
+          .catch((err) => message.danger(err.message))
+      );
     }
   }
+  function login() {
+    if (validate()) {
+      loader.loading(() =>
+        auth.user
+          .login(creds.username, creds.password)
+          .then(() => message.success("Logged In", () => goto("/quizes")))
+          .catch((err) => message.danger(err.message))
+      );
+    }
+  }
+
+  let message, loader;
 </script>
 
 <MessageBox bind:this={message} />
+<Loading bind:this={loader} />
 <Container --width="75%">
   <div class="roboto-condensed">
     <Card>
@@ -54,7 +69,7 @@
       {#snippet footer()}
         <div id="footer">
           <Button varient="info" onclick={register}>Register</Button>
-          <Button>Login</Button>
+          <Button onclick={login}>Login</Button>
         </div>
       {/snippet}
     </Card>

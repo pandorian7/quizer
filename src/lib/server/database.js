@@ -134,6 +134,20 @@ const userExists = async (username) => {
   return RowExists;
 };
 
+const getUser = async (username, password_hash) => {
+  let res = await db.query(
+    "SELECT id, username FROM USERS WHERE username = ? AND password_hash = ?",
+    [username, password_hash]
+  );
+  const results = res[0];
+  if (results.length) {
+    let user = results[0];
+    return user;
+  } else {
+    return null;
+  }
+};
+
 export default {
   questions: {
     getAll: getQuestions,
@@ -162,5 +176,6 @@ export default {
   user: {
     create: createUser,
     exists: userExists,
+    get: getUser,
   },
 };

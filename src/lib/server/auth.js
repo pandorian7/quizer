@@ -1,4 +1,6 @@
 // from chagtgpt
+import db from "./database";
+
 async function hashPassword(password) {
   const encoder = new TextEncoder();
   const data = encoder.encode(password);
@@ -10,4 +12,9 @@ async function hashPassword(password) {
   return hashHex;
 }
 
-export default { password: { hash: hashPassword } };
+async function getUser(username, password) {
+  const password_hash = await hashPassword(password);
+  return db.user.get(username, password_hash);
+}
+
+export default { password: { hash: hashPassword }, user: { get: getUser } };
