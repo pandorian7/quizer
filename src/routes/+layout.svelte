@@ -1,12 +1,24 @@
 <script>
+  import { page } from "$app/state";
+
   import NavBar from "$lib/Components/NavBar.svelte";
 
   import "./app.css";
 
-  const { children } = $props();
+  let { children, data } = $props();
 </script>
 
-<NavBar />
+<NavBar>
+  {#snippet usercard()}
+    {#if page.url.pathname != "/login"}
+      {#if data.user}
+        {data.user.username} <a href="/logout">(Logout)</a>
+      {:else}
+        <a href="/login">LogIn</a>
+      {/if}
+    {/if}
+  {/snippet}
+</NavBar>
 
 {@render children()}
 

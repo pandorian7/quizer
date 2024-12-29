@@ -29,3 +29,5 @@
 <button onclick={() => console.log($state.snapshot(questions))}>Show</button>
 
 <button onclick={() => modal.open()}>open</button>
+
+user: {data.user}

@@ -24,7 +24,7 @@
 
   async function onDelete(id) {
     await fetch(`/api/quizes/${id}`, { method: "DELETE" });
-    invalidate("/api/quizes");
+    await invalidate("/api/quizes");
   }
 
   let titlebox;

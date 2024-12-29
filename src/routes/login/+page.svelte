@@ -40,7 +40,12 @@
       loader.loading(() =>
         auth.user
           .login(creds.username, creds.password)
-          .then(() => message.success("Logged In", () => goto("/quizes")))
+          .then(() =>
+            message.success("Logged In", async () => {
+              // await invalidate(() => true);
+              goto("/quizes", { invalidateAll: true });
+            })
+          )
           .catch((err) => message.danger(err.message))
       );
     }
@@ -49,7 +54,7 @@
   let message, loader;
 </script>
 
-<MessageBox bind:this={message} />
+<MessageBox bind:this={message} timeout={1000} />
 <Loading bind:this={loader} />
 <Container --width="75%">
   <div class="roboto-condensed">
