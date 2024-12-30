@@ -4,6 +4,7 @@
   import NavBar from "$lib/Components/NavBar.svelte";
 
   import "./app.css";
+  import "$lib/css/fonts.css";
 
   let { children, data } = $props();
 </script>
@@ -26,5 +27,6 @@
   :global(body) {
     background-color: rgb(229, 227, 227);
     margin: 0;
+    font-family: "Roboto Condensed", serif;
   }
 </style>

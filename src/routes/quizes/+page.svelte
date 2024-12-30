@@ -55,28 +55,28 @@
           >
           <CardFooter
             ><div style:display="flex">
-              <div style:padding="8px">{quiz.points} points</div>
+              <div style:padding="8px">
+                by {data.user.id == quiz.owner_id ? "You" : quiz.username} | {quiz.points}
+                points
+              </div>
               <div style:margin-left="auto">
-                <button
-                  class="actionBtn"
-                  style:background-color="var(--danger-color)"
-                  onclick={() =>
-                    confirmDelete.confirm(() =>
-                      loader.loading(() => onDelete(quiz.id))
-                    )}>Delete</button
-                >
-                <!-- <button
-                  class="actionBtn"
-                  style:background-color="var(--danger-color)"
-                  onclick={() => loader.loading(() => onDelete(quiz.id))}
-                  >Delete</button
-                > -->
-                <a href="/quizes/{quiz.id}/edit">
+                {#if data.user.id == quiz.owner_id}
                   <button
                     class="actionBtn"
-                    style:background-color="var(--warning-color)">Edit</button
+                    style:background-color="var(--danger-color)"
+                    onclick={() =>
+                      confirmDelete.confirm(() =>
+                        loader.loading(() => onDelete(quiz.id))
+                      )}>Delete</button
                   >
-                </a>
+                  <a href="/quizes/{quiz.id}/edit">
+                    <button
+                      class="actionBtn"
+                      style:background-color="var(--warning-color)">Edit</button
+                    >
+                  </a>
+                {/if}
+
                 <a href="/quizes/{quiz.id}/attempt"
                   ><button class="actionBtn">Attempt</button></a
                 >

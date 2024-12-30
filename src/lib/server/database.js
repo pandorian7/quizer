@@ -77,10 +77,18 @@ const updateAnswer = (id, answer, is_correct) =>
     id,
   ]);
 
-const getQuizes = async () => (await db.query("SELECT * FROM QUIZES"))[0];
+const getQuizes = async () =>
+  (
+    await db.query(
+      "select qs.*, us.username from QUIZES as qs JOIN USERS as us on qs.owner_id = us.id"
+    )
+  )[0];
 
-const addQuiz = async (title) => {
-  await db.query("INSERT INTO QUIZES (title) VALUES (?)", [title]);
+const addQuiz = async (title, owner_id) => {
+  await db.query("INSERT INTO QUIZES (title, owner_id) VALUES (?, ?)", [
+    title,
+    owner_id,
+  ]);
   let res = await db.query("SELECT LAST_INSERT_ID() as id");
   let quiz_id = res[0][0].id;
   return quiz_id;

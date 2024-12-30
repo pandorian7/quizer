@@ -165,6 +165,48 @@ CREATE TABLE SESSIONS (
 
 - write databse quieries to interact with db
 
+- extend quizes table to hold uesr info
+
+# Add quiz creator id to quizes table
+
+```sql
+-- template from chatgpt
+-- Step 1: Add the new column (nullable temporarily)
+ALTER TABLE your_table
+ADD COLUMN new_column_name datatype;
+
+-- Step 2: Set the desired value for existing rows (ensure this value exists in the referenced table)
+UPDATE your_table
+SET new_column_name = 'valid_foreign_key_value';
+
+-- Step 3: Add the foreign key constraint and make the column NOT NULL
+ALTER TABLE your_table
+ADD CONSTRAINT fk_new_column_name
+FOREIGN KEY (new_column_name)
+REFERENCES referenced_table(referenced_column)
+ON DELETE CASCADE; -- Or your desired ON DELETE action
+
+ALTER TABLE your_table
+MODIFY COLUMN new_column_name datatype NOT NULL;
+```
+
+```sql
+ALTER TABLE QUIZES ADD COLUMN owner_id BIGINT UNSIGNED;
+UPDATE QUIZES SET owner_id = 1;
+ALTER TABLE QUIZES ADD CONSTRAINT fk_owner_id FOREIGN KEY (owner_id) REFERENCES USERS(id) ON DELETE CASCADE;
+ALTER TABLE QUIZES MODIFY COLUMN  owner_id BIGINT UNSIGNED NOT NULL;
+```
+
+## functions that i will have to update because of this update
+
+- database.addQuiz ok
+- /api/quizes/[POST]
+- database.getQuiz = include username
+
+### functions that use those functions
+
+- seems none
+
 # BUGS
 
 - unwanted behaviour in /question ✅ fixed using layout groups
