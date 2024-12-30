@@ -42,6 +42,6 @@ export async function DELETE({ params }) {
   if (!(await db.quizes.exists(id))) {
     return error(404, { message: "quiz does not exist" });
   }
-  db.quizes.delete(id);
+  await db.quizes.delete(id);
   return json({ id });
 }
