@@ -1,4 +1,4 @@
-import db from "$lib/server/database";
+import db, { initDB } from "$lib/server/database";
 
 export async function handle({ event, resolve }) {
   const session = event.cookies.get("session");
@@ -6,4 +6,8 @@ export async function handle({ event, resolve }) {
   if (!user) db.session.delete(session);
   event.locals.user = user;
   return resolve(event);
+}
+
+export async function init() {
+  initDB();
 }

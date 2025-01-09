@@ -1,11 +1,22 @@
 import mysql from "mysql2/promise";
 
-const db = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "password",
-  database: "QUIZER",
-});
+// const db = mysql.createPool({
+//   host: "localhost",
+//   user: "root",
+//   password: "password",
+//   database: "QUIZER",
+// });
+
+let db;
+
+export function initDB() {
+  db = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    password: "password",
+    database: "QUIZER",
+  });
+}
 
 const getQuestions = () => db.query("SELECT * FROM QUESTIONS");
 
