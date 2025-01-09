@@ -59,7 +59,7 @@
                 by {data.user.id == quiz.owner_id ? "You" : quiz.username} | {quiz.points}
                 points
               </div>
-              <div style:margin-left="auto">
+              <div style:margin-left="auto" style:display="flex">
                 {#if data.user.id == quiz.owner_id}
                   <button
                     class="actionBtn"
