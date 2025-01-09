@@ -207,6 +207,8 @@ ALTER TABLE QUIZES MODIFY COLUMN  owner_id BIGINT UNSIGNED NOT NULL;
 
 - seems none
 
+# make the api reject requests asking to modify quizes, questions etc. then the user is not the owner
+
 # BUGS
 
 - unwanted behaviour in /question ✅ fixed using layout groups
