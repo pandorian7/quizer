@@ -2,6 +2,18 @@ import { error, json } from "@sveltejs/kit";
 
 import db from "$lib/server/database";
 
+async function ensurePermissions(user, quiz_id) {
+  if (!user) {
+    error(403, "user is not logged in");
+  }
+
+  const quiz = await db.quizes.get(quiz_id);
+
+  if (user.id !== quiz.owner_id) {
+    error(401, "this quiz is not owned by the user");
+  }
+}
+
 export async function GET({ params }) {
   const { id } = params;
   const exists = await db.quizes.exists(id);
@@ -20,8 +32,10 @@ export async function GET({ params }) {
   }
 }
 
-export async function PUT({ params, request }) {
+export async function PUT({ params, request, locals }) {
   const { id } = params;
+
+  await ensurePermissions(locals.user, id);
 
   if (!(await db.quizes.exists(id))) {
     return error(404, { message: "quiz does not exist" });
@@ -37,8 +51,11 @@ export async function PUT({ params, request }) {
   return json({ id });
 }
 
-export async function DELETE({ params }) {
+export async function DELETE({ params, locals }) {
   const { id } = params;
+
+  await ensurePermissions(locals.user, id);
+
   if (!(await db.quizes.exists(id))) {
     return error(404, { message: "quiz does not exist" });
   }
