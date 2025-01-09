@@ -109,6 +109,10 @@
   };
 </script>
 
+<svelte:head>
+  <title>Edit :: {data.quiz.title}</title>
+</svelte:head>
+
 <MessageBox bind:this={msgbox} />
 <Loading bind:this={loader} />
 <Dial onclick={on.save} text="Save" />

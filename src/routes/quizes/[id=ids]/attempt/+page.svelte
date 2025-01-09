@@ -36,6 +36,10 @@
   let loader;
 </script>
 
+<svelte:head>
+  <title>Attempt :: {data.quiz.title}</title>
+</svelte:head>
+
 <Loading bind:this={loader} />
 <div style:height="100%">
   <Container>

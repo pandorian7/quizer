@@ -2,6 +2,10 @@
   import { HomeSlider, Container, Card, Button } from "$lib/Components/index";
 </script>
 
+<svelte:head>
+  <title>Quizer</title>
+</svelte:head>
+
 <HomeSlider />
 
 <Container>

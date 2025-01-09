@@ -54,6 +54,10 @@
   let message, loader;
 </script>
 
+<svelte:head>
+  <title>Login :: Register</title>
+</svelte:head>
+
 <MessageBox bind:this={message} timeout={1000} />
 <Loading bind:this={loader} />
 <Container --width="75%">

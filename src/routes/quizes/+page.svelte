@@ -32,6 +32,10 @@
   let confirmDelete;
 </script>
 
+<svelte:head>
+  <title>Quizes</title>
+</svelte:head>
+
 <Loading bind:this={loader} />
 <TitleBox bind:this={titlebox} onAdd={(title) => onAdd(title)} />
 <Dial onclick={() => titlebox.open()} text="Add" />

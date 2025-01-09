@@ -5,3 +5,7 @@
     goto("/login", { invalidateAll: true });
   });
 </script>
+
+<svelte:head>
+  <title>Logging Out</title>
+</svelte:head>
