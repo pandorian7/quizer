@@ -4,6 +4,7 @@ import Loading from "./Loading.svelte";
 import TextInput from "./TextInput.svelte";
 import Container from "./Container.svelte";
 import CountDown from "./CountDown.svelte";
+import HomeSlider from "./HomeSlider.svelte";
 import MessageBox from "./MessageBox.svelte";
 import ProgressBar from "./ProgressBar.svelte";
 import AfterQuizCard from "./AfterQuizCard.svelte";
@@ -17,6 +18,7 @@ export {
   Container,
   TextInput,
   CountDown,
+  HomeSlider,
   MessageBox,
   ProgressBar,
   QuestionCard,
