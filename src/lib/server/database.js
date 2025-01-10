@@ -1,21 +1,18 @@
 import mysql from "mysql2/promise";
 
-// const db = mysql.createPool({
-//   host: "localhost",
-//   user: "root",
-//   password: "password",
-//   database: "QUIZER",
-// });
+import { HOST, USER, PASSWORD, DATABASE } from "$env/static/private";
 
 let db;
 
+const mysqlConfig = {
+  host: HOST,
+  user: USER,
+  password: PASSWORD,
+  database: DATABASE,
+};
+
 export function initDB() {
-  db = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "QUIZER",
-  });
+  db = mysql.createPool(mysqlConfig);
 }
 
 const getQuestions = () => db.query("SELECT * FROM QUESTIONS");
