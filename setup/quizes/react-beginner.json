@@ -1,0 +1,129 @@
+{
+  "title": "Beginner React Quiz",
+  "description": "A quiz to test your basic React knowledge",
+  "points": 300,
+  "questions": [
+    {
+      "question": "What is React?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        {
+          "answer": "A JavaScript library for building user interfaces",
+          "is_correct": 1
+        },
+        { "answer": "A CSS framework", "is_correct": 0 },
+        { "answer": "A backend framework", "is_correct": 0 },
+        { "answer": "A database", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "What is JSX?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        {
+          "answer": "JavaScript XML, a syntax extension for JavaScript",
+          "is_correct": 1
+        },
+        { "answer": "A tool to compile JavaScript code", "is_correct": 0 },
+        { "answer": "A library for styling in React", "is_correct": 0 },
+        { "answer": "None of the above", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which method is used to create components in React?",
+      "multiple_answers": 1,
+      "duration": 60,
+      "answers": [
+        { "answer": "Functional components", "is_correct": 1 },
+        { "answer": "Class components", "is_correct": 1 },
+        { "answer": "DOM components", "is_correct": 0 },
+        { "answer": "React.createComponent()", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "How do you create a React app?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "npx create-react-app my-app", "is_correct": 1 },
+        { "answer": "npm start-react-app", "is_correct": 0 },
+        { "answer": "react-init my-app", "is_correct": 0 },
+        { "answer": "npm init react-app", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which of the following is a hook in React?",
+      "multiple_answers": 1,
+      "duration": 60,
+      "answers": [
+        { "answer": "useState", "is_correct": 1 },
+        { "answer": "useEffect", "is_correct": 1 },
+        { "answer": "useDOM", "is_correct": 0 },
+        { "answer": "useData", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "What is the purpose of the useState hook?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        {
+          "answer": "To manage state in functional components",
+          "is_correct": 1
+        },
+        { "answer": "To handle side effects", "is_correct": 0 },
+        { "answer": "To fetch data from an API", "is_correct": 0 },
+        { "answer": "To create a new component", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "What is the virtual DOM?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        {
+          "answer": "A lightweight representation of the real DOM",
+          "is_correct": 1
+        },
+        { "answer": "The actual DOM", "is_correct": 0 },
+        { "answer": "A new type of DOM from React", "is_correct": 0 },
+        { "answer": "A debugging tool", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "What does the ReactDOM.render() method do?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "Renders React elements into the DOM", "is_correct": 1 },
+        { "answer": "Compiles JSX into JavaScript", "is_correct": 0 },
+        { "answer": "Creates a new React component", "is_correct": 0 },
+        { "answer": "Starts the React development server", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "How do you pass data from a parent component to a child component?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "By using props", "is_correct": 1 },
+        { "answer": "By using state", "is_correct": 0 },
+        { "answer": "By using context", "is_correct": 0 },
+        { "answer": "By using hooks", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "What is the correct syntax to import React in a file?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "import React from 'react';", "is_correct": 1 },
+        { "answer": "require('react')", "is_correct": 0 },
+        { "answer": "include React from 'react';", "is_correct": 0 },
+        { "answer": "import 'react';", "is_correct": 0 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+{
+  "title": "Intermediate JavaScript Quiz",
+  "description": "A quiz to test your JavaScript knowledge at an intermediate level",
+  "points": 800,
+  "questions": [
+    {
+      "question": "What does 'this' refer to in a regular function?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        {
+          "answer": "The global object or undefined in strict mode",
+          "is_correct": 1
+        },
+        { "answer": "The parent object", "is_correct": 0 },
+        { "answer": "Always the window object", "is_correct": 0 },
+        { "answer": "The function itself", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which of the following are features of ES6?",
+      "multiple_answers": 1,
+      "duration": 60,
+      "answers": [
+        { "answer": "Arrow functions", "is_correct": 1 },
+        { "answer": "Promises", "is_correct": 1 },
+        { "answer": "Var declarations", "is_correct": 0 },
+        { "answer": "Generators", "is_correct": 1 }
+      ]
+    },
+    {
+      "question": "What is the output of 'console.log(0.1 + 0.2 === 0.3)'?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "false", "is_correct": 1 },
+        { "answer": "true", "is_correct": 0 },
+        { "answer": "undefined", "is_correct": 0 },
+        { "answer": "NaN", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which of the following methods can stop event propagation?",
+      "multiple_answers": 1,
+      "duration": 60,
+      "answers": [
+        { "answer": "event.stopPropagation()", "is_correct": 1 },
+        { "answer": "event.preventDefault()", "is_correct": 0 },
+        { "answer": "event.stopImmediatePropagation()", "is_correct": 1 },
+        { "answer": "event.cancel()", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "How do you create a shallow copy of an object?",
+      "multiple_answers": 1,
+      "duration": 60,
+      "answers": [
+        { "answer": "Object.assign({}, obj)", "is_correct": 1 },
+        { "answer": "[...obj]", "is_correct": 0 },
+        { "answer": "{...obj}", "is_correct": 1 },
+        { "answer": "obj.copy()", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "What is the output of 'typeof NaN'?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "'number'", "is_correct": 1 },
+        { "answer": "'NaN'", "is_correct": 0 },
+        { "answer": "'undefined'", "is_correct": 0 },
+        { "answer": "'object'", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which statement is true about 'const' declarations?",
+      "multiple_answers": 1,
+      "duration": 60,
+      "answers": [
+        {
+          "answer": "The value of a const variable cannot be changed",
+          "is_correct": 0
+        },
+        {
+          "answer": "The reference of a const object cannot change",
+          "is_correct": 1
+        },
+        {
+          "answer": "Const variables must be initialized during declaration",
+          "is_correct": 1
+        },
+        {
+          "answer": "Const variables are hoisted and can be used before declaration",
+          "is_correct": 0
+        }
+      ]
+    },
+    {
+      "question": "Which array method returns a new array without modifying the original?",
+      "multiple_answers": 1,
+      "duration": 60,
+      "answers": [
+        { "answer": "map()", "is_correct": 1 },
+        { "answer": "filter()", "is_correct": 1 },
+        { "answer": "splice()", "is_correct": 0 },
+        { "answer": "forEach()", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "What will 'console.log([...'JavaScript'])' output?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        {
+          "answer": "['J', 'a', 'v', 'a', 'S', 'c', 'r', 'i', 'p', 't']",
+          "is_correct": 1
+        },
+        { "answer": "['JavaScript']", "is_correct": 0 },
+        { "answer": "Error", "is_correct": 0 },
+        { "answer": "undefined", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "What will 'Promise.resolve(5).then(console.log)' output?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "5", "is_correct": 1 },
+        { "answer": "undefined", "is_correct": 0 },
+        { "answer": "Promise {5}", "is_correct": 0 },
+        { "answer": "Error", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "What is the output of 'console.log([] + {})'?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "'[object Object]'", "is_correct": 1 },
+        { "answer": "'undefined'", "is_correct": 0 },
+        { "answer": "0", "is_correct": 0 },
+        { "answer": "Error", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which of the following is a valid Set operation?",
+      "multiple_answers": 1,
+      "duration": 60,
+      "answers": [
+        { "answer": "set.add(value)", "is_correct": 1 },
+        { "answer": "set.remove(value)", "is_correct": 0 },
+        { "answer": "set.delete(value)", "is_correct": 1 },
+        { "answer": "set.insert(value)", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which JavaScript operator is used to spread an array?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "...", "is_correct": 1 },
+        { "answer": "*", "is_correct": 0 },
+        { "answer": "&", "is_correct": 0 },
+        { "answer": "%", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "What is the difference between '==' and '===' in JavaScript?",
+      "multiple_answers": 1,
+      "duration": 60,
+      "answers": [
+        {
+          "answer": "'==' compares values with type coercion",
+          "is_correct": 1
+        },
+        {
+          "answer": "'===' compares values without type coercion",
+          "is_correct": 1
+        },
+        { "answer": "'==' is stricter than '==='", "is_correct": 0 },
+        {
+          "answer": "'===' allows type conversion during comparison",
+          "is_correct": 0
+        }
+      ]
+    },
+    {
+      "question": "What will 'console.log(typeof null)' output?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "'object'", "is_correct": 1 },
+        { "answer": "'null'", "is_correct": 0 },
+        { "answer": "'undefined'", "is_correct": 0 },
+        { "answer": "'string'", "is_correct": 0 }
+      ]
+    }
+  ]
+}

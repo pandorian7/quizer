@@ -1,0 +1,30 @@
+theres a add quiz api and this is the data format it expects
+{
+  "title": "hello",
+  "description": "desk",
+  "points": 1000,
+  "questions": [
+    {
+      "question": "New Question",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "New Answer", "is_correct": 0 },
+        { "answer": "hi bro", "is_correct": 1 }
+      ]
+    }
+  ]
+}
+
+points can be following values 100, 300, 500, 800, 100
+for each question duration value can be these values 10, 30, 60, 120, 180, 240, 300
+duration values are in seconds
+
+your task is to create a json object for a given context
+you can choose number of questions. minimum is 10 maximum is 20
+for each question you can choose whether it's a multiple answers or single answer, 
+if it's single answer there can be only 1 correct answer.
+if multiple answers one or more can be correct
+when selecting number of correct answers make sure there is no pattern (don't make all the multiple answer questions have high number of correct answers)
+
+when user gives a context, topic or document generate a valid json object according to given instructions

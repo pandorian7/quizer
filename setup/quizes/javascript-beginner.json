@@ -1,0 +1,123 @@
+{
+  "title": "Beginner JavaScript Quiz",
+  "description": "A quiz to test your basic JavaScript knowledge",
+  "points": 500,
+  "questions": [
+    {
+      "question": "What is the correct way to declare a variable in JavaScript?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "var myVariable;", "is_correct": 1 },
+        { "answer": "variable myVariable;", "is_correct": 0 },
+        { "answer": "let: myVariable;", "is_correct": 0 },
+        { "answer": "declare myVariable;", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which of the following is a JavaScript data type?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "String", "is_correct": 1 },
+        { "answer": "Integer", "is_correct": 0 },
+        { "answer": "Decimal", "is_correct": 0 },
+        { "answer": "None of the above", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which symbol is used for comments in JavaScript?",
+      "multiple_answers": 1,
+      "duration": 60,
+      "answers": [
+        { "answer": "//", "is_correct": 1 },
+        { "answer": "/* */", "is_correct": 1 },
+        { "answer": "#", "is_correct": 0 },
+        { "answer": "<!-- -->", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "How do you write 'Hello, World!' in an alert box?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "alert('Hello, World!');", "is_correct": 1 },
+        { "answer": "msgBox('Hello, World!');", "is_correct": 0 },
+        { "answer": "alertBox('Hello, World!');", "is_correct": 0 },
+        { "answer": "print('Hello, World!');", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which keyword is used to create a constant in JavaScript?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "const", "is_correct": 1 },
+        { "answer": "constant", "is_correct": 0 },
+        { "answer": "var", "is_correct": 0 },
+        { "answer": "let", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which method is used to convert a string to an integer?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "parseInt()", "is_correct": 1 },
+        { "answer": "toInteger()", "is_correct": 0 },
+        { "answer": "convertToInt()", "is_correct": 0 },
+        { "answer": "int()", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which statement about JavaScript arrays is true?",
+      "multiple_answers": 1,
+      "duration": 60,
+      "answers": [
+        {
+          "answer": "Arrays can store multiple types of data.",
+          "is_correct": 1
+        },
+        {
+          "answer": "Arrays have a fixed length once created.",
+          "is_correct": 0
+        },
+        { "answer": "Array indexing starts at 1.", "is_correct": 0 },
+        { "answer": "Arrays are dynamic in size.", "is_correct": 1 }
+      ]
+    },
+    {
+      "question": "What will be the output of 'typeof null' in JavaScript?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "'object'", "is_correct": 1 },
+        { "answer": "'null'", "is_correct": 0 },
+        { "answer": "'undefined'", "is_correct": 0 },
+        { "answer": "'number'", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which function is used to log messages to the console?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "console.log()", "is_correct": 1 },
+        { "answer": "log.console()", "is_correct": 0 },
+        { "answer": "print()", "is_correct": 0 },
+        { "answer": "log()", "is_correct": 0 }
+      ]
+    },
+    {
+      "question": "Which operator is used to assign a value to a variable?",
+      "multiple_answers": 0,
+      "duration": 30,
+      "answers": [
+        { "answer": "=", "is_correct": 1 },
+        { "answer": "==", "is_correct": 0 },
+        { "answer": "===", "is_correct": 0 },
+        { "answer": "=>", "is_correct": 0 }
+      ]
+    }
+  ]
+}
