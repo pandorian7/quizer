@@ -42,7 +42,7 @@ export async function PUT({ params, request }) {
   const msg = validateQuestionandAnswers(question, answers);
 
   if (msg) {
-    error(400, { message: err });
+    error(400, { message: msg });
   }
 
   await db.questions.update(
