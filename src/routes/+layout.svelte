@@ -15,7 +15,9 @@
 
 <NavBar>
   {#snippet usercard()}
-    <a href={data.download}>Download</a>
+    {#if data.download}
+      <a href={data.download}>Download</a>
+    {/if}
     {#if page.url.pathname != "/login"}
       {#if data.user}
         {data.user.username} <a href="/logout">(Logout)</a>
