@@ -12,6 +12,8 @@
 
   import auth from "$lib/userAuth";
 
+  const { data } = $props();
+
   const creds = $state({
     username: "",
     password: "",
@@ -43,7 +45,7 @@
           .then(() =>
             message.success("Logged In", async () => {
               // await invalidate(() => true);
-              goto("/quizes", { invalidateAll: true });
+              goto(data.from, { invalidateAll: true });
             })
           )
           .catch((err) => message.danger(err.message))
