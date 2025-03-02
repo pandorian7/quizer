@@ -1,5 +1,5 @@
 {
-  "host": "https://uni-quizer.vercel.app",
-  "username": "yasith",
-  "password": "yasith123"
+  "host": "http://localhost:5173",
+  "username": "computerPerson",
+  "password": "computer"
 }

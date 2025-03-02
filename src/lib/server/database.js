@@ -9,7 +9,7 @@ const mysqlConfig = {
   user: USER,
   password: PASSWORD,
   database: DATABASE,
-  connectionLimit: 4,
+  connectionLimit: 2,
 };
 
 export function initDB() {
