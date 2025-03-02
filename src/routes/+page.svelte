@@ -12,7 +12,9 @@
   <div class="card">
     <Card --card-body-bg="var(--grey-300)">
       {#snippet header()}
-        <snap class="title">Welcome to Quizer!!!</snap>
+        <div style:text-align="left">
+          <span class="title">Welcome to Quizer!!!</span>
+        </div>
       {/snippet}
       {#snippet body()}
         <div class="body">
@@ -43,9 +45,7 @@
 </Container>
 
 <style>
-  .title {
-    font-size: 3rem;
-  }
+  
   .body {
     font-size: 1.5rem;
     margin-right: 1rem;
@@ -57,5 +57,8 @@
   }
   .card {
     text-align: justify;
+  }
+  .title {
+    font-size: 3rem;
   }
 </style>
