@@ -16,7 +16,7 @@
 <NavBar>
   {#snippet usercard()}
     {#if data.download}
-      <a href={data.download}>Download</a>
+      <a href={data.download} id="downloadBtn">Download</a>
     {/if}
     {#if page.url.pathname != "/login"}
       {#if data.user}
@@ -34,5 +34,10 @@
   :global(body) {
     margin: 0;
     font-family: "Roboto Condensed", serif;
+  }
+  @media (max-width: 576px) {
+    #downloadBtn {
+      display: none;
+    }
   }
 </style>
