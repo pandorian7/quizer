@@ -1,0 +1,3 @@
+[submodule "quizer-desktop"]
+	path = quizer-desktop
+	url = https://github.com/pandorian7/quizer-desktop
